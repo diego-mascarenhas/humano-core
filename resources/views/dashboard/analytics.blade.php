@@ -28,20 +28,22 @@
 
 <!-- Team Statistics -->
 <div class="row">
-	<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+	<!-- Contacts -->
+	<div class="col-lg-3 col-md-6 col-sm-12 mb-4">
 		<div class="card">
 			<div class="card-body">
 				<div class="d-flex align-items-start justify-content-between">
 					<div class="content-left">
-						<span class="text-heading">{{ __('Team Members') }}</span>
+						<span class="text-heading">{{ __('Total Contacts') }}</span>
 						<div class="d-flex align-items-center my-2">
-							<h3 class="mb-0 me-2">{{ $teamStats['total_users'] }}</h3>
+							<h3 class="mb-0 me-2">{{ number_format($teamStats['total_contacts']) }}</h3>
+							<small class="text-success">👥</small>
 						</div>
-						<p class="mb-0">{{ __('Active users in your team') }}</p>
+						<p class="mb-0">{{ __('CRM contacts database') }}</p>
 					</div>
 					<div class="avatar">
 						<span class="avatar-initial rounded bg-label-primary">
-							<i class="ti ti-users ti-sm"></i>
+							<i class="ti ti-users ti-sm">👥</i>
 						</span>
 					</div>
 				</div>
@@ -49,20 +51,22 @@
 		</div>
 	</div>
 
-	<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+	<!-- Projects -->
+	<div class="col-lg-3 col-md-6 col-sm-12 mb-4">
 		<div class="card">
 			<div class="card-body">
 				<div class="d-flex align-items-start justify-content-between">
 					<div class="content-left">
-						<span class="text-heading">{{ __('Active Modules') }}</span>
+						<span class="text-heading">{{ __('Active Projects') }}</span>
 						<div class="d-flex align-items-center my-2">
-							<h3 class="mb-0 me-2">{{ $teamStats['active_modules'] }}</h3>
+							<h3 class="mb-0 me-2">{{ $teamStats['active_projects'] }}</h3>
+							<small class="text-success">📂</small>
 						</div>
-						<p class="mb-0">{{ __('Enabled modules') }}</p>
+						<p class="mb-0">{{ __('Currently running') }}</p>
 					</div>
 					<div class="avatar">
 						<span class="avatar-initial rounded bg-label-success">
-							<i class="ti ti-puzzle ti-sm"></i>
+							<i class="ti ti-folders ti-sm">📂</i>
 						</span>
 					</div>
 				</div>
@@ -70,20 +74,45 @@
 		</div>
 	</div>
 
-	<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+	<!-- Tasks -->
+	<div class="col-lg-3 col-md-6 col-sm-12 mb-4">
 		<div class="card">
 			<div class="card-body">
 				<div class="d-flex align-items-start justify-content-between">
 					<div class="content-left">
-						<span class="text-heading">{{ __('Activities') }}</span>
+						<span class="text-heading">{{ __('Pending Tasks') }}</span>
 						<div class="d-flex align-items-center my-2">
-							<h3 class="mb-0 me-2">{{ $teamStats['total_activities'] }}</h3>
+							<h3 class="mb-0 me-2">{{ $teamStats['pending_tasks'] }}</h3>
+							<small class="text-warning">⏳</small>
 						</div>
-						<p class="mb-0">{{ __('Total team activities') }}</p>
+						<p class="mb-0">{{ __('Tasks to complete') }}</p>
+					</div>
+					<div class="avatar">
+						<span class="avatar-initial rounded bg-label-warning">
+							<i class="ti ti-checklist ti-sm">✅</i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Revenue -->
+	<div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex align-items-start justify-content-between">
+					<div class="content-left">
+						<span class="text-heading">{{ __('Monthly Revenue') }}</span>
+						<div class="d-flex align-items-center my-2">
+							<h3 class="mb-0 me-2">${{ number_format($teamStats['monthly_revenue']) }}</h3>
+							<small class="text-success">💰</small>
+						</div>
+						<p class="mb-0">{{ __('This month earnings') }}</p>
 					</div>
 					<div class="avatar">
 						<span class="avatar-initial rounded bg-label-info">
-							<i class="ti ti-activity ti-sm"></i>
+							<i class="ti ti-receipt ti-sm">🧾</i>
 						</span>
 					</div>
 				</div>

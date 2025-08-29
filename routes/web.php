@@ -1,35 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Idoneo\HumanoCore\Http\Controllers\DashboardController;
+use Idoneo\HumanoCore\Http\Controllers\UserController;
 use Idoneo\HumanoCore\Http\Controllers\CategoryController;
+use Idoneo\HumanoCore\Http\Controllers\ActivityLogController;
+use Idoneo\HumanoCore\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
-| Humano Core Web Routes
+| Core Web Routes
 |--------------------------------------------------------------------------
-|
-| Here are the core routes for the Humano system, including dashboard
-| and category management routes.
-|
 */
 
-Route::middleware(['auth', 'verified'])->group(function ()
-{
-	// Dashboard Routes
-	Route::get('/dashboard/analytics', [DashboardController::class, 'index'])
-		->name('dashboard.analytics');
-
-	// Categories Management Routes
-	Route::prefix('categories')->name('categories.')->group(function ()
-	{
-		Route::get('/', [CategoryController::class, 'index'])->name('index');
-		Route::get('/create', [CategoryController::class, 'create'])->name('create');
-		Route::post('/', [CategoryController::class, 'store'])->name('store');
-		Route::get('/{category}', [CategoryController::class, 'show'])->name('show');
-		Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('edit');
-		Route::put('/{category}', [CategoryController::class, 'update'])->name('update');
-		Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('destroy');
-		Route::post('/order', [CategoryController::class, 'updateOrder'])->name('order');
-	});
+Route::middleware(['web', 'auth', 'verified'])->group(function () {
+    
+    // Users
+    Route::resource('users', UserController::class);
+    
+    // Categories
+    Route::resource('categories', CategoryController::class);
+    Route::post('/categories/order', [CategoryController::class, 'updateOrder'])->name('categories.order');
+    Route::get('/categories/{id}/items', [CategoryController::class, 'showItems'])->name('categories.items');
+    
+    // Activity Log
+    Route::get('/activity-log', [ActivityLogController::class, 'index'])->name('activity-log.index');
+    Route::get('/activity-log/{id}', [ActivityLogController::class, 'show'])->name('activity-log.show');
+    
+    // Dashboard Analytics
+    Route::get('/dashboard/analytics', [DashboardController::class, 'analytics'])->name('dashboard.analytics');
+    
 });

@@ -17,12 +17,11 @@ return new class extends Migration
 			$table->string('title')->nullable();
 			$table->longText('content');
 			$table->boolean('is_private')->default(false);
-			$table->morphs('notable'); // Polymorphic relationship
+			$table->morphs('notable'); // Polymorphic relationship (ya incluye índice automáticamente)
 			$table->foreignId('user_id')->constrained()->onDelete('cascade');
 			$table->foreignId('team_id')->constrained()->onDelete('cascade');
 			$table->timestamps();
 
-			$table->index(['notable_type', 'notable_id']);
 			$table->index(['team_id', 'user_id']);
 			$table->index(['team_id', 'is_private']);
 		});
