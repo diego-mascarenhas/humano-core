@@ -86,7 +86,7 @@ class Team extends JetstreamTeam
      */
     public function contacts()
     {
-        return $this->hasMany(Contact::class, 'team_id');
+        return $this->hasMany(\App\Models\Contact::class, 'team_id');
     }
 
     /**

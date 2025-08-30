@@ -14,6 +14,7 @@ class HumanoCoreServiceProvider extends PackageServiceProvider
             ->name('humano-core')
             ->hasConfigFile()
             ->hasViews()
+            ->hasAssets()
             ->hasMigrations()
             ->hasRoutes('web')
             ->hasCommands([

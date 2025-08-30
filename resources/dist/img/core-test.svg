@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120">
+  <rect width="200" height="120" fill="#F5F7FB"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#4B5B76">
+    <text x="16" y="52" font-size="18" font-weight="700">humano-core</text>
+    <text x="16" y="80" font-size="12">assets publish test</text>
+  </g>
+</svg>
